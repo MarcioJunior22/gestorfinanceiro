@@ -1,0 +1,10 @@
+src/components/AddTransaction.tsx(16,24): error TS2345: Argument of type '{ title: string; amount: number; type: "income" | "expense"; categoryId: string; date: string; }' is not assignable to parameter of type 'Omit<Transaction, "id" | "userId" | "createdAt">'.
+  Type '{ title: string; amount: number; type: "income" | "expense"; categoryId: string; date: string; }' is missing the following properties from type 'Omit<Transaction, "id" | "userId" | "createdAt">': status, recurrence
+src/components/TransactionModal.tsx(3,10): error TS1484: 'Transaction' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/TransactionModal.tsx(3,23): error TS1484: 'RecurrenceType' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/Categories.tsx(4,10): error TS1484: 'Category' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/pages/Dashboard.tsx(4,49): error TS6133: 'CheckCircle2' is declared but its value is never read.
+src/pages/Transactions.tsx(4,1): error TS6133: 'ptBR' is declared but its value is never read.
+src/pages/Transactions.tsx(5,52): error TS6133: 'ArrowUpRight' is declared but its value is never read.
+src/pages/Transactions.tsx(5,66): error TS6133: 'ArrowDownRight' is declared but its value is never read.
+src/pages/Transactions.tsx(7,10): error TS1484: 'Transaction' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.

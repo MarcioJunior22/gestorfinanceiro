@@ -9,6 +9,7 @@ interface AuthContextType {
     register: (name: string, email: string, passwordHash: string) => boolean;
     logout: () => void;
     updateTheme: (theme: 'light' | 'dark') => void;
+    updateBudget: (categoryId: string, limit: number) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -70,8 +71,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
+    const updateBudget = (categoryId: string, limit: number) => {
+        if (currentUser) {
+            const budgets = currentUser.preferences.monthlyBudgets || {};
+            const updatedUser: User = {
+                ...currentUser,
+                preferences: {
+                    ...currentUser.preferences,
+                    monthlyBudgets: { ...budgets, [categoryId]: limit }
+                }
+            };
+            setCurrentUser(updatedUser);
+            setAppData(prev => ({
+                ...prev,
+                users: prev.users.map(u => u.id === currentUser.id ? updatedUser : u)
+            }));
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ user: currentUser, login, register, logout, updateTheme }}>
+        <AuthContext.Provider value={{ user: currentUser, login, register, logout, updateTheme, updateBudget }}>
             {children}
         </AuthContext.Provider>
     );
